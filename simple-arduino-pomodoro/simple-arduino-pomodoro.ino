@@ -1,7 +1,7 @@
 /*
   Simple Arduino Pomodoro
 
-  Timer based on Blink without Delay: http://www.arduino.cc/en/Tutorial/BlinkWithoutDelay
+  Timer based on "Blink without Delay": http://www.arduino.cc/en/Tutorial/BlinkWithoutDelay
 */
 
 const int led1Min  = 6;
@@ -33,20 +33,20 @@ void startRoutine() {
   const int interval = 50;
 
   // Animate
-  allLedsHighAscending(interval);
+  setAllLedsAscending(HIGH, interval);
   delay(interval);
-  allLedsLowAscending(interval);
+  setAllLedsAscending(LOW, interval);
   delay(interval);
-  allLedsHighAscending(interval);
+  setAllLedsAscending(HIGH, interval);
 
   // Blink
-  allLedsLow();
+  setAllLeds(LOW);
   delay(interval);
-  allLedsHigh();
+  setAllLeds(HIGH);
   delay(interval);
-  allLedsLow();
+  setAllLeds(LOW);
   delay(interval);
-  allLedsHigh();
+  setAllLeds(HIGH);
 }
 
 void endRoutine() {
@@ -54,69 +54,40 @@ void endRoutine() {
 
   while (true) {
     // Blink
-    allLedsHigh();
+    setAllLeds(HIGH);
     delay(interval);
-    allLedsLow();
+    setAllLeds(LOW);
     delay(interval);
   }
 }
 
-void allLedsHighAscending(const int interval) {
-  digitalWrite(led1Min,  HIGH);
-  delay(interval);
-  digitalWrite(led2Min,  HIGH);
-  delay(interval);
-  digitalWrite(led3Min,  HIGH);
-  delay(interval);
-  digitalWrite(led4Min,  HIGH);
-  delay(interval);
-  digitalWrite(led5Min,  HIGH);
-  delay(interval);
-  digitalWrite(led10Min, HIGH);
-  delay(interval);
-  digitalWrite(led15Min, HIGH);
-  delay(interval);
-  digitalWrite(led20Min, HIGH);
+void setAllLeds(const int state) {
+  digitalWrite(led1Min,  state);
+  digitalWrite(led2Min,  state);
+  digitalWrite(led3Min,  state);
+  digitalWrite(led4Min,  state);
+  digitalWrite(led5Min,  state);
+  digitalWrite(led10Min, state);
+  digitalWrite(led15Min, state);
+  digitalWrite(led20Min, state);
 }
 
-void allLedsLowAscending(const int interval) {
-  digitalWrite(led1Min,  LOW);
+void setAllLedsAscending(const int state, const int interval) {
+  digitalWrite(led1Min,  state);
   delay(interval);
-  digitalWrite(led2Min,  LOW);
+  digitalWrite(led2Min,  state);
   delay(interval);
-  digitalWrite(led3Min,  LOW);
+  digitalWrite(led3Min,  state);
   delay(interval);
-  digitalWrite(led4Min,  LOW);
+  digitalWrite(led4Min,  state);
   delay(interval);
-  digitalWrite(led5Min,  LOW);
+  digitalWrite(led5Min,  state);
   delay(interval);
-  digitalWrite(led10Min, LOW);
+  digitalWrite(led10Min, state);
   delay(interval);
-  digitalWrite(led15Min, LOW);
+  digitalWrite(led15Min, state);
   delay(interval);
-  digitalWrite(led20Min, LOW);
-}
-
-void allLedsHigh() {
-  digitalWrite(led1Min,  HIGH);
-  digitalWrite(led2Min,  HIGH);
-  digitalWrite(led3Min,  HIGH);
-  digitalWrite(led4Min,  HIGH);
-  digitalWrite(led5Min,  HIGH);
-  digitalWrite(led10Min, HIGH);
-  digitalWrite(led15Min, HIGH);
-  digitalWrite(led20Min, HIGH);
-}
-
-void allLedsLow() {
-  digitalWrite(led1Min,  LOW);
-  digitalWrite(led2Min,  LOW);
-  digitalWrite(led3Min,  LOW);
-  digitalWrite(led4Min,  LOW);
-  digitalWrite(led5Min,  LOW);
-  digitalWrite(led10Min, LOW);
-  digitalWrite(led15Min, LOW);
-  digitalWrite(led20Min, LOW);
+  digitalWrite(led20Min, state);
 }
 
 void loop() {
