@@ -13,7 +13,7 @@ const int led10Min = 11;
 const int led15Min = 12;
 const int led20Min = 13;
 
-const unsigned long pomodoroMillis = (unsigned long) 25 * 60 * 1000;
+const unsigned long pomodoroTotalMillis = (unsigned long) 25 * 60 * 1000;
 
 void setup() {
   // Set pins as outputs
@@ -121,55 +121,55 @@ void allLedsLow() {
 
 void loop() {
   unsigned long currentMillis = millis();
-  unsigned long pomodoroLeftMillis = pomodoroMillis - currentMillis;
+  unsigned long pomodoroRemainingMillis = pomodoroTotalMillis - currentMillis;
 
-  if (pomodoroLeftMillis <= 0)
+  if (pomodoroRemainingMillis <= 0)
     endRoutine();
 
   // 1 minute LED
-  if (pomodoroLeftMillis >= (unsigned long) 1 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 1 * 60 * 1000)
     digitalWrite(led1Min, HIGH);
   else
     digitalWrite(led1Min, LOW);
 
   // 2 minutes LED
-  if (pomodoroLeftMillis >= (unsigned long) 2 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 2 * 60 * 1000)
     digitalWrite(led2Min, HIGH);
   else
     digitalWrite(led2Min, LOW);
 
   // 3 minutes LED
-  if (pomodoroLeftMillis >= (unsigned long) 3 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 3 * 60 * 1000)
     digitalWrite(led3Min, HIGH);
   else
     digitalWrite(led3Min, LOW);
 
   // 4 minutes LED
-  if (pomodoroLeftMillis >= (unsigned long) 4 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 4 * 60 * 1000)
     digitalWrite(led4Min, HIGH);
   else
     digitalWrite(led4Min, LOW);
 
   // 5 minutes LED
-  if (pomodoroLeftMillis >= (unsigned long) 5 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 5 * 60 * 1000)
     digitalWrite(led5Min, HIGH);
   else
     digitalWrite(led5Min, LOW);
 
   // 10 minutes LED
-  if (pomodoroLeftMillis >= (unsigned long) 10 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 10 * 60 * 1000)
     digitalWrite(led10Min, HIGH);
   else
     digitalWrite(led10Min, LOW);
 
   // 15 minutes LED
-  if (pomodoroLeftMillis >= (unsigned long) 15 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 15 * 60 * 1000)
     digitalWrite(led15Min, HIGH);
   else
     digitalWrite(led15Min, LOW);
 
   // 20 minutes LED
-  if (pomodoroLeftMillis >= (unsigned long) 20 * 60 * 1000)
+  if (pomodoroRemainingMillis >= (unsigned long) 20 * 60 * 1000)
     digitalWrite(led20Min, HIGH);
   else
     digitalWrite(led20Min, LOW);
