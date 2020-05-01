@@ -22,22 +22,22 @@ const unsigned long pomodoroTotalMillis = pomodoroWorkMillis + pomodoroPauseMill
 
 // Work LEDs (red & green)
 const unsigned long workLeds[][2] = {
-  { 4, (unsigned long)              0}, //  0 -  1 minute  left LED (green)
-  { 5, (unsigned long)  1 * 60 * 1000}, //  1 -  2 minutes left LED (green)
-  { 6, (unsigned long)  2 * 60 * 1000}, //  2 -  3 minutes left LED (green)
-  { 7, (unsigned long)  3 * 60 * 1000}, //  3 -  4 minutes left LED (green)
-  { 8, (unsigned long)  4 * 60 * 1000}, //  4 -  5 minutes left LED (green)
-  { 9, (unsigned long)  5 * 60 * 1000}, //  5 - 10 minutes left LED (red)
-  {10, (unsigned long) 10 * 60 * 1000}, // 10 - 15 minutes left LED (red)
-  {11, (unsigned long) 15 * 60 * 1000}, // 15 - 20 minutes left LED (red)
-  {12, (unsigned long) 20 * 60 * 1000}  // 20 - 25 minutes left LED (red)
+  { 4, (unsigned long)              0}, // LED 1 (green)  0 -  1 minute  left
+  { 5, (unsigned long)  1 * 60 * 1000}, // LED 2 (green)  1 -  2 minutes left
+  { 6, (unsigned long)  2 * 60 * 1000}, // LED 3 (green)  2 -  3 minutes left
+  { 7, (unsigned long)  3 * 60 * 1000}, // LED 4 (green)  3 -  4 minutes left
+  { 8, (unsigned long)  4 * 60 * 1000}, // LED 5 (green)  4 -  5 minutes left
+  { 9, (unsigned long)  5 * 60 * 1000}, // LED 6 (red)    5 - 10 minutes left
+  {10, (unsigned long) 10 * 60 * 1000}, // LED 7 (red)   10 - 15 minutes left
+  {11, (unsigned long) 15 * 60 * 1000}, // LED 8 (red)   15 - 20 minutes left
+  {12, (unsigned long) 20 * 60 * 1000}  // LED 9 (red)   20 - 25 minutes left
 };
 // sizeof() counts the number of bytes, not elements.
 // Divide sizeof(workLeds) by sizeof(unsigned long) to get the number of bytes the array "occupies".
 // Divide by 2 (because the array has two dimensions) to get the number of elements.
 const int numOfWorkLeds = sizeof(workLeds) / sizeof(unsigned long) / 2;
 
-// Pause LED (blue)
+// LED 0 (blue) Pause
 const int pauseLed = 3;
 int pauseLedBrightness = 0;
 int pauseLedFadeAmount = 1;
